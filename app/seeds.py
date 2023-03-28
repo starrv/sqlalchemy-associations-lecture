@@ -3,6 +3,7 @@ import random
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy import event
 
 from models import Pet, Owner, Job, Handler
 
@@ -10,6 +11,11 @@ if __name__ == '__main__':
     engine = create_engine('sqlite:///pet_app.db')
     Session = sessionmaker(bind=engine)
     session = Session()
+
+    def _fk_pragma_on_connect(dbapi_con, con_record):
+        dbapi_con.execute('pragma foreign_keys=ON')
+    event.listen(engine, 'connect', _fk_pragma_on_connect)
+
 #2.a ✅ Add delete methods for Pet and Owner to clear the database before each seeding
 #----------
 #5.✅ Add Delete methods for Job and Handler
