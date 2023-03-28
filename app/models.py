@@ -88,17 +88,3 @@ class Pet(Base):
 #5.✅ Update your migrations by running `alembic revision --autogenerate -m` and `alembic upgrade head` 
 
 #After running your migrations, go build out some seeds and test your many to many with debug.py
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
